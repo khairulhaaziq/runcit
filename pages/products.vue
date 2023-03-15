@@ -1,6 +1,4 @@
 <template>
-	<div class="flex-grow flex justify-center py-8">
-		<div class="lg: max-w-[1200px] flex-grow">
 			<div
 				class="flex justify-between items-center px-6 mb-4"
 			>
@@ -11,7 +9,7 @@
 					>
 						Import</button
 					><button
-                                        @click="isOpen = true"
+						@click="isOpen = true"
 						class="bg-[#5F02BC] rounded-lg px-4 py-2"
 					>
 						Add a product
@@ -108,61 +106,92 @@
 					</button>
 				</div>
 			</div>
-		</div>
-		
-	</div>
-        <HeadlessTransitionRoot :show="isOpen" as="template">
-                <HeadlessDialog :open="isOpen" @close="setIsOpen" class="relative z-50 text-sm">
-                        <HeadlessTransitionChild
-        enter="duration-300 ease-out"
-        enter-from="opacity-0"
-        enter-to="opacity-100"
-        leave="duration-200 ease-in"
-        leave-from="opacity-100"
-        leave-to="opacity-0"
-      >
-                        <div class="fixed inset-0 bg-white/5" aria-hidden="true" />
-                </HeadlessTransitionChild>
-                        <div class="fixed inset-0 flex items-center justify-center p-4">
-                                <HeadlessTransitionChild
-        enter="duration-300 ease-out"
-        enter-from="opacity-0 scale-95"
-        enter-to="opacity-100 scale-100"
-        leave="duration-200 ease-in"
-        leave-from="opacity-100 scale-100"
-        leave-to="opacity-0 scale-95"
-      >
-			<HeadlessDialogPanel class="w-full max-w-lg rounded-xl bg-[#111111] p-8 text-white border border-[#282828]">
-				<HeadlessDialogTitle class="text-lg font-medium">Deactivate account</HeadlessDialogTitle
+	<HeadlessTransitionRoot :show="isOpen" as="template">
+		<HeadlessDialog
+			:open="isOpen"
+			@close="setIsOpen"
+			class="relative z-50 text-sm"
+		>
+			<HeadlessTransitionChild
+				enter="duration-300 ease-out"
+				enter-from="opacity-0"
+				enter-to="opacity-100"
+				leave="duration-200 ease-in"
+				leave-from="opacity-100"
+				leave-to="opacity-0"
+			>
+				<div
+					class="fixed inset-0 bg-white/5"
+					aria-hidden="true"
+				/>
+			</HeadlessTransitionChild>
+			<div
+				class="fixed inset-0 flex items-center justify-center p-4"
+			>
+				<HeadlessTransitionChild
+					enter="duration-300 ease-out"
+					enter-from="opacity-0 scale-95"
+					enter-to="opacity-100 scale-100"
+					leave="duration-200 ease-in"
+					leave-from="opacity-100 scale-100"
+					leave-to="opacity-0 scale-95"
 				>
-				<HeadlessDialogDescription class="mb-4 text-red-500">
-					This will permanently deactivate your
-					account
-				</HeadlessDialogDescription>
+					<HeadlessDialogPanel
+						class="w-full max-w-lg rounded-xl bg-[#111111] p-8 text-white border border-[#282828]"
+					>
+						<HeadlessDialogTitle
+							class="text-lg font-medium"
+							>Deactivate
+							account</HeadlessDialogTitle
+						>
+						<HeadlessDialogDescription
+							class="mb-4 text-red-500"
+						>
+							This will permanently
+							deactivate your account
+						</HeadlessDialogDescription>
 
-				<p class="opacity-60">
-					Are you sure you want to deactivate your
-					account? All of your data will be
-					permanently removed. This action cannot
-					be undone.
-				</p>
-                                <div class="flex gap-2 mt-6 justify-end">
-				<button @click="setIsOpen(false)" class="px-4 py-2 rounded-md bg-[#232323]">
-					Deactivate
-				</button>
-				<button @click="setIsOpen(false)" class="px-4 py-2 rounded-md bg-[#232323]">
-					Cancel
-				</button>
-                        </div>
-			</HeadlessDialogPanel>
-                        </HeadlessTransitionChild>
-                        </div>
+						<p class="opacity-60">
+							Are you sure you want to
+							deactivate your account?
+							All of your data will be
+							permanently removed.
+							This action cannot be
+							undone.
+						</p>
+						<div
+							class="flex gap-2 mt-6 justify-end"
+						>
+							<button
+								@click="
+									setIsOpen(
+										false
+									)
+								"
+								class="px-4 py-2 rounded-md bg-[#232323]"
+							>
+								Deactivate
+							</button>
+							<button
+								@click="
+									setIsOpen(
+										false
+									)
+								"
+								class="px-4 py-2 rounded-md bg-[#232323]"
+							>
+								Cancel
+							</button>
+						</div>
+					</HeadlessDialogPanel>
+				</HeadlessTransitionChild>
+			</div>
 		</HeadlessDialog>
-        </HeadlessTransitionRoot>
+	</HeadlessTransitionRoot>
 </template>
 
 <script setup>
-const isOpen = ref(true);
+const isOpen = ref(false);
 
 function setIsOpen(value) {
 	isOpen.value = value;
